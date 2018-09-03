@@ -1,0 +1,13 @@
+name: "STA2453 - Data Science Methods, Collaboration, and Communication "
+navbar:
+  title: "STA2453"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Syllabus"
+      href: STA2453_coursedescription_201819.html
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
+output_dir: "."

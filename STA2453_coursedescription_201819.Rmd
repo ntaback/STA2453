@@ -1,0 +1,88 @@
+---
+title: "STA2453H1Y - Data Science Methods, Collaboration, and Communication"
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
+bibliography: syllab.bib
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(tidyverse)
+```
+
+# Instructor
+
+[Prof. Nathan Taback](http://utstat.toronto.edu/nathan/)
+
+# Course Description
+
+Students will gain experience with the data science process including: data collection; stating the question; data wrangling; data analysis; data interpretation; and communication by working on projects.  The projects will involve data collected by an organization (e.g., organization or scientist), using published data, or scraping web pages.  All projects will involve some type of collaboration or communication. Students are expected to be familiar with the application of basic statistical methods used for inference (e.g., general linear models), prediction (e.g., linear and logistic regression), and are comfortable with basic data analysis using a programming language such as R or Python.  Students will be expected to adopt a reproducible research workflow using tools such as RMarkdown, or Jupyter Notebook. 
+
+Class time will be a mixture of informal lectures, class discussions, meetings with collaborators, and student presentations.
+
+This course will not cover specific "methods", nevertheless it's important that students are able to independently learn and apply unfamilar methods.
+
+# Evaluation
+
+All work will be graded on a scale from 1 to 4 (sometimes with pluses and minuses) where:
+
+
+------------------------------------------------------------------------
+Grade value   Description
+-----------   ---------------------------------------------------------
+1             Work does not meet expectations.
+
+2             Work meets expectations minimally, possibly missing some.
+
+3             Good work; meets all or most expectations.
+
+4             Excellent work; exceeds expectations.
+------------------------------------------------------------------------
+
+
+Grades will almost always be 2 or 3 (1’s and 4’s are rare). Generally speaking, a 2 is a B, a 3 is an A, and a 4 is an A+.
+
+
+
+-----------------------------------------
+Project        Item              Value               
+-------------- ----------------- -------- 
+Project #1     Proposal          5%
+
+               Draft report      5%               
+
+               Final report      10%              
+               
+               Presentation      20%              
+               on project #1
+               
+Project #2     Proposal          5%
+
+               Draft report      5%               
+
+               Final report      10%              
+               
+               Presentation      20%              
+               on project #2
+
+Participation  Attendance,       20%             
+               participate in
+               discussions, 
+               prepare for class
+-----------------------------------------
+
+
+# Tentative Course Schedule
+
+```{r, echo=FALSE}
+sched <- read_csv(file = "../2018-2019/sta2453_2018schedule.csv", na = character())
+knitr::kable(sched)
+```
+
+
+# Reading References
+
+Coming soon
