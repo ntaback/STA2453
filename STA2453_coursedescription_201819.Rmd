@@ -45,44 +45,32 @@ Grade value   Description
 
 Grades will almost always be 2 or 3 (1’s and 4’s are rare). Generally speaking, a 2 is a B, a 3 is an A, and a 4 is an A+.
 
+```{r, echo=FALSE}
+sched <- read_csv(file = "sta2453grading.csv", 
+                  na = character(), 
+                  col_types = cols(Project = col_character(), 
+                                   Item = col_character(), 
+                                   Value = col_character()))
+knitr::kable(sched)
+```
 
-
------------------------------------------
-Project        Item              Value               
--------------- ----------------- -------- 
-Project #1     Proposal          5%
-
-               Draft report      5%               
-
-               Final report      10%              
-               
-               Presentation      20%              
-               on project #1
-               
-Project #2     Proposal          5%
-
-               Draft report      5%               
-
-               Final report      10%              
-               
-               Presentation      20%              
-               on project #2
-
-Participation  Attendance,       20%             
-               participate in
-               discussions, 
-               prepare for class
------------------------------------------
 
 
 # Tentative Course Schedule
 
 ```{r, echo=FALSE}
-sched <- read_csv(file = "../2018-2019/sta2453_2018schedule.csv", na = character())
+sched <- read_csv(file = "../2018-2019/sta2453_2018schedule.csv", 
+                  na = character(), 
+                  col_types = cols(Class = col_character(), 
+                                   Date = col_character(), 
+                                   Description = col_character(), 
+                                   Reading = col_character(), 
+                                   Due = col_character()))
 knitr::kable(sched)
 ```
 
+1. Project 2 will involve industry partners that will co-supervise student projects. Therefore, the exact timing of project #2 meetings and presentations are difficult to predict. 
 
 # Reading References
 
-Coming soon
+
