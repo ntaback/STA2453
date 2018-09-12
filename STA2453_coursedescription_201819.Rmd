@@ -1,5 +1,6 @@
 ---
 title: "STA2453H1Y - Data Science Methods, Collaboration, and Communication"
+subtitle: "Syllabus"
 output:
   html_document:
     theme: cosmo

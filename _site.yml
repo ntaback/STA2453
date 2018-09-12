@@ -6,6 +6,8 @@ navbar:
       href: index.html
     - text: "Syllabus"
       href: STA2453_coursedescription_201819.html
+    - text: "Course documents"
+      href: coursedocs.html
 output:
   html_document:
     theme: cosmo
