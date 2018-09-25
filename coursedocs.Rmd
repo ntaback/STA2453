@@ -16,3 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 [Data Analysis Examples](sta2453-11sept2018-class1.html)
 
 [In-class assignment](sta2453_inclassassign.slides-2.html)
+
+# Class 2 - September 25
+
+[Project #1 Description](sta2453_2018_project1.html)

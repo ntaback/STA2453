@@ -1,0 +1,180 @@
+---
+title: "STA2453H1Y: Project #1 - Data Collection and Analysis"
+author: "Nathan Taback"
+date: '2018-09-24'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+library(reticulate)
+use_python(" anaconda3/bin/python")
+
+library(emo)
+```
+
+# Data Collection and Analysis
+
+## General Questions that the Data Analysis Should Answer
+
+1. How well do New York Times (NYT) movie critics pick box office hits?
+
+2. Is there a relationship between NYT movie review sentiment and crtics picks?   
+
+3. What characteristics of movies affect revenue?  
+
+## Data Collection
+
+NYT movie reviews can be obtained from collected from <http://developer.nytimes.com> from the [Movie Reviews API](http://developer.nytimes.com/movie_reviews_v2.json#/README).  The [Open Movie Database (OMDb) - a RESTful web service](http://www.omdbapi.com), [Box Office Mojo](https://www.boxofficemojo.com), and [THE NUMBERS](https://www.the-numbers.com) all contain data related to movies. For the NYT API and OMDb you will need to request an API key. 
+
+### Sample Code in R
+
+Below is sample R code to access the data. 
+
+```{r, echo=FALSE}
+apikey_times <- "ae71411b586e4f9c82502e7e782b122d"
+apikey_omdb <- "ab8ac07e"
+```
+
+
+```{r}
+library(tidyverse)
+library(jsonlite)
+
+url <- "http://api.nytimes.com/svc/movies/v2/reviews/search.json?"
+query <- "query=big&"
+qdate <- "opening-date=2017-01-01;2018-01-01&" #date range
+key <- "api-key=" #apikey_times contains NYT api key
+url2 <- paste0(url,query,qdate,key,apikey_times) 
+nytdat <- fromJSON(url2)
+nytdat$results
+```
+
+```{r, eval=FALSE}
+#alternative method to access NYT API
+library(httr)
+url <- "http://api.nytimes.com/svc/movies/v2/reviews/search.json"
+nyt_dat <- GET(url, query = list("query" = "big", "api-key" = apikey_times))
+nyt_dat <- content(nyt_dat, as = "parsed")
+nyt_dat$results[[1]] #first element of list
+```
+
+
+
+```{r}
+library(httr)
+#OMDb data
+# Get OMDb data on first title
+omdb_q <- GET("http://www.omdbapi.com/", 
+          query = list(t = nytdat$results$display_title[1], apikey = apikey_omdb))
+omdb_dat <- as.data.frame(content(omdb_q))
+omdb_dat
+```
+
+
+
+```{r}
+library(boxoffice)
+bodat <- boxoffice(dates = seq(as.Date("2017-07-28"), as.Date("2017-08-30"), "day"), site = "numbers")
+bodat %>% filter(movie == nytdat$results$display_title[1]) %>% head()
+```
+
+### Sample Code in Python
+
+Below is sample Python code to access the data.
+
+
+```{python}
+import json
+import requests
+import pandas as pd
+from pandas.io.json import json_normalize
+
+url = 'http://api.nytimes.com/svc/movies/v2/reviews/search.json?query=big&opening-date=1930-01-01;2000-01-01&api-key=ae71411b586e4f9c82502e7e782b122d'
+df = pd.read_json(url, orient = 'records')
+nytdata = json_normalize(df['results'])
+print(nytdata.head())
+
+apikey_omdb = "ab8ac07e"
+title = 't=' + nytdata['display_title'][1].replace(' ', '+')
+req = 'http://www.omdbapi.com/?apikey='+ apikey_omdb + '&'+ title
+print(pd.read_json(req))
+```
+
+# The Assignment
+
+The assignment is to develop answers to the questions above using data, but you will almost surely need to develop more focused questions. You will have to collect data and wrangle into a format that can be analysed using statistical methods, and draw appropriate conclusions to answer the questions that you have selected.  
+
+# What Should I Submit?
+
+Conduct the analysis and write the report using R Markdown or a Jupyter notebook^\*^.  You will submit a notebook that contains the writeup with your data analysis and any associated files. 
+
+I should be able to run (knit) the R Markdown or Jupyter notebook with your data analysis.
+
+* NB: The R package [`reticulate`](https://rstudio.github.io/reticulate/articles/r_markdown.html) includes a Python engine for R Markdown that enables easy interoperabilty between Python and R chunks. I used it to write this document `r emo::ji("happy")`.
+
+# Answers to Some Common Questions
+
+1. It's not necessary for R/Python code chunks to appear in the report (in R Markdown use the chunk option `echo=FALSE`), unless there is some part of the code that will contribute to describing what you have done in the data analysis. Also, you will be submitting your R Markdown/Jupyter Notebook file so I can see all the gory details. This leads to ...
+
+2. What should be reported in the report?  A high level description of what you have done.  This leads to …
+
+3. Who is the intended audience for the report and what do you mean by a “high level description”?  The intended audience is an educated person that has taken at least one basic statistics course, but might be a bit rusty on the details.  For example, your supervisor at work completed an MBA ten years ago and took a few statistics courses, but the details are a bit hazy.
+
+
+# How will my writing be evaluated?
+
+Your writing will be evaluated for clarity and conciseness. 
+
+1. Title [1-5]
+There should be an appropriate title, adequate summary, and complete information including names and dates.
+
+2. Introduction [1-5]
+The purpose of the research should be clearly stated and the scope of what is considered in the report should be clear.
+
+3. Methods [1-5]
+The role of each method should be clearly stated. The description of the analyses should be clear and unambiguous so that another statistician or data scientist could easily re-construct it. The methods should be described accurately.
+
+4. Results [1-5]
+There should be appropriate tables and graphs. The results should be clearly stated in the context of the problem. The size and direction of significant results should be given. The results must be accurately stated. The research question should be adequately answered.
+
+5. Conclusion / Discussion [1-5]
+The results should be clearly and completely summarized. This section should also include discussion of limitations and/or concerns and/or suggestions for future consideration as appropriate.
+
+6. General Considerations [1-5]
+The ideas should be presented in logical order, with well-organized sections, no grammatical, spelling, or punctuation errors, an appropriate level of technical detail, and be clear and easy to follow.
+
+# Presentation
+
+## Time 
+
+The time allotted for each student is 10 minutes plus 5 minutes for discussion. 
+
+## General Guidelines
+
+You will need to remind us about the project, but only tell us what we really need to know. We may be curious about the results, but they are not the purpose of this presentation. So, what should you include? We’re interested in what you learned in the context of your project that has made you a better applied statistician/data scientist. Depending on your project, you may want to address some of the following: 
+
+- What made the project difficult? 
+- What made the project easy? 
+- What did you learn about data collection? 
+- What did you learn about statistical communication? 
+- What did you learn about statistical methods? 
+- What useful rules-of-thumb did you learn? 
+- What kind of creative thinking was needed to turn the data or research questions into something that you could analyze? 
+- From the beginning of the course until now, what has changed in how you view statistical work? 
+
+## How your presentations will be evaluated?
+
+### Content [60%] 
+- Is there evidence that you have thought deeply and insightfully about your project and what you have learned from it? 
+- Is the content interesting and relevant? 
+
+### Clarity [30%]
+- Could the points of your presentation be easily understood by your classmates? 
+- Are you organized? 
+- By listening to your presentation, have your classmates had the opportunity to also learn what you learned? 
+
+### Delivery [10%]
+- Was everything that you said easy to hear? 
+- Was your presentation style engaging?
