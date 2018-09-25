@@ -1,8 +1,6 @@
 ---
 title: "STA2453 - Data Science, Collaboration, and Communication"
-output:
-  html_document: default
-  html_notebook: default
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -142,10 +140,10 @@ The UofT administration is intrested in learning about what people are saying ab
 Twitter posts (tweets) were searched for the hashtag "#UofT".  The tweets were restricted to the time period 2017-09-05 thru 2017-09-11 and users were located within 50km of the University of Toronto St. George campus.
 
 ```{r,echo=FALSE,cache=TRUE}
-consumer_key_nt <- "NaA0RNAUfpE5Y1BOtTIFZTI2T"
-consumer_secret_nt <- "5EQN7SkE6vjHKkhnWjsdc1BpPmX5c0WxLUqP0DxoN5RaJvj370"
-access_token_nt <- "120333526-hDYldSQZfiBEEakypgOrXdp80fZOxDr5tjzT384R" 
-access_secret_nt <- "UpDYqrKX3LIGS78RvZNqj2Vx4MdtgLNqQ5nWDLas7RbDt" 
+consumer_key_nt <- "0U68h1PWbv4Q4IfTd86Ejxdzo"
+consumer_secret_nt <- "GK1t0oOGO39DyWbkbtAZ2XQA5QibPeHd1By1iztQ09uczzHsLq"
+access_token_nt <- "120333526-3eA4NOkUM3WoNKKvUNnlOZoyVjOmdiXMQExdJghW" 
+access_secret_nt <- "VqCThlzK4qf3tETLOSV82oSbm1Lw6X43tSTyS2Y3cUhC8" 
 ```
 
 
@@ -162,7 +160,7 @@ setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
 
 # Search Twitter
 
-fn_twitter <- searchTwitter("#UofT",n = 500, lang = "en", since = '2018-09-01',until = '2018-09-07') 
+fn_twitter <- searchTwitter("#UofT", n = 50, lang = "en", since = '2018-09-19') 
 
 fn_twitter_df <- twListToDF(fn_twitter) # Convert to data frame
 ```

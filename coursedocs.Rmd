@@ -19,9 +19,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Class 2 - September 25
 
-Review previous in-class assignment
+[My solution to previous in-class assignment](kidneystones_ver1-2.html)
 
 [Project #1 Description](sta2453_2018_project1.html)
+
+[Project #1 Draft Proposal Expectations](project1proposal.html)
 
 [Data Analysis as Art](sta2453-class2-slides-Sept25.html)
 

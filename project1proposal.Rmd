@@ -1,0 +1,22 @@
+---
+title: 'Proposal Expectations for STA2453H1Y: Project #1 - Data Collection and Analysis'
+output: html_document
+---
+
+# Due: Oct. 9, 2018 by 10:00
+
+## Submit via <a href="mailto:nathan.taback@utoronto.ca?Subject=STA2453 Project#1 %20Proposal" target="_top"> email to Nathan Taback.</a>.  Please use this link or make sure use the subject line "Project#1 Proposal".
+
+### Use [RMarkdown](http://rmarkdown.rstudio.com) or a Jupyter notebook to produce your proposal for project #1.  
+
+## What information should my proposal contain?
+
+- Your name and student number.
+- Date of the proposal.
+- Project title: A snappy title that describes your project.
+- What are your primary questions?  
+- Data collection: how will the data be collected?  You might consider adding some sample code and data.
+- Exploratory Data Analysis: how will you explore the data?  How will this exploration help you answer your questions?  You might consider adding some shell tables or describe the types of graphs that you will produce.
+- Modelling:  describe any formal statistical models that you might use to answer your questions.
+
+
