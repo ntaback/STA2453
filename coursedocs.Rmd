@@ -19,4 +19,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Class 2 - September 25
 
+Review previous in-class assignment
+
 [Project #1 Description](sta2453_2018_project1.html)
+
+[Data Analysis as Art](sta2453-class2-slides-Sept25.html)
+
+[In-class Assignment](sta2453_class2_2018air_pollution_eda_student.html)

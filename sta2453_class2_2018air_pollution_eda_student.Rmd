@@ -1,0 +1,48 @@
+---
+title: "In-class Assignment:  EDA - Pollution in Ontario"
+date: September 25, 2018
+output: html_document
+---
+
+# Air Pollution in Ontario 
+
+## Question
+
+Is air pollution different in Southern Ontario compared to Northern Ontario?
+
+A more specific question might be ...
+
+Are hourly PM-2.5 levels higher in Toronto compared to Thunder Bay in 2017?
+
+## Data
+
+The data source is [MOE Ontario](http://www.airqualityontario.com/history/).  The Thunder Bay data is available [here](https://raw.githubusercontent.com/ntaback/STA2453/master/thunderbay_pm25_2017.csv) and the Toronto data is available [here](https://raw.githubusercontent.com/ntaback/STA2453/master/toronto_pm25_2017.csv). 
+
+# In-class Assignment
+
+1. Find a partner in the class.
+
+2. Create one data vizualization that you think answers the question.
+
+3. Your vizualization should fill the screen, and have a large clear title.  The title should communicate the key piece of information that you will be presenting.
+
+4. You and your partner will give a 5 minute presentation next class (Oct. 9).
+
+## Presentation
+
+Imagine you are giving a talk to answer the question.  You have come to a point in the talk where you are going to use the vizualization.
+
+1) Speaker 1 say:  "Our first point is that _____________________________."
+
+2) Speaker 2 say:  "Our second point is that  ___________________ ."
+
+(Summarize two main ideas communicated by your vizualization)
+
+3) Speaker 1 say, "Here we see ________________________________."
+
+4) Speaker 2 say, "Here we see ________________________________."
+
+(Summarize two interesting features of your vizualization)
+
+5) Speaker 1/2 asks for questions.
+
