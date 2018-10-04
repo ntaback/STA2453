@@ -8,6 +8,8 @@ navbar:
       href: STA2453_coursedescription_201819.html
     - text: "Course documents"
       href: coursedocs.html
+    - text: "Additional References"
+      href: additionalrefs.html
 output:
   html_document:
     theme: cosmo

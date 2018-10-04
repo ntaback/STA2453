@@ -1,0 +1,32 @@
+---
+title: "Additional References"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Statistical Inference and Modelling References
+
+Cox, David Roxbee. Principles of statistical inference. Cambridge university press, 2006. [Google books](https://books.google.ca/books?id=nRgtGZXi2KkC&lpg=PT8&ots=OezvX8rM0L&dq=cox%20principles%20of%20statistical%20inference&lr&pg=PT91#v=onepage&q=cox%20principles%20of%20statistical%20inference&f=false).
+
+Efron, Bradley, and Trevor Hastie. Computer age statistical inference. Vol. 5. Cambridge University Press, 2016. [Electronic copy from authors](https://web.stanford.edu/~hastie/CASI/order.html).
+
+Gelman, Andrew, and Jennifer Hill. 2007. Data analysis using regression and multilevel/hierarchical models. Cambridge: Cambridge University Press.
+
+James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An introduction to statistical learning. Vol. 112. New York: springer, 2013. [Electronic copy from authors](https://www-bcf.usc.edu/~gareth/ISL/).
+
+Sheather, Simon J. 2009. A modern approach to regression with R. New York, NY: Springer. [Electronic copy available at UofT library](http://go.utlib.ca/cat/6928488).
+
+Taback, Nathan. Design of Experiments and Observational Studies.  An Introduction to Design, Causal Inference ,and Analysis Using R. [Free electronic book](https://leanpub.com/designinfer), [Course notes](http://utstat.toronto.edu/%7Enathan/designscistudynotes.htm).
+
+## Basic Introductory Statistics
+
+Diez, David M., Christopher D. Barr, and Mine Cetinkaya-Rundel. OpenIntro statistics. Vol. 12. CreateSpace, 2012. [Free electronic book](https://www.openintro.org/stat/textbook.php?stat_book=isrs).
+
+Rice, John A. 2007. Mathematical statistics and data analysis. Belmont, CA: Thomson/Brooks/Cole.
+
+
+
+
