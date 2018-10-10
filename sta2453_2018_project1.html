@@ -15,15 +15,15 @@
 
 <title>STA2453H1Y: Project #1 - Data Collection and Analysis</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/bootstrap/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap/shim/respond.min.js"></script>
+<script src="site_libs/navigation/tabsets.js"></script>
+<link href="site_libs/highlightjs/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -291,9 +291,9 @@ omdb_dat</code></pre>
 ##            Ratings.Source Ratings.Value Ratings.Source.1 Ratings.Value.1
 ## 1 Internet Movie Database        7.4/10  Rotten Tomatoes             84%
 ##   Ratings.Source.2 Ratings.Value.2 Metascore imdbRating imdbVotes
-## 1       Metacritic          77/100        77        7.4    32,773
-##      imdbID  Type         DVD         BoxOffice         Production
-## 1 tt5390504 movie 12 Dec 2017 &amp;pound;16,788,494 Annapurna Pictures
+## 1       Metacritic          77/100        77        7.4    35,516
+##      imdbID  Type         DVD   BoxOffice         Production
+## 1 tt5390504 movie 12 Dec 2017 $16,788,494 Annapurna Pictures
 ##                 Website Response
 ## 1 http://detroit.movie/     True</code></pre>
 <pre class="r"><code>library(boxoffice)
@@ -396,9 +396,9 @@ print(pd.read_json(req))</code></pre>
 ## 2  95 min  American Pie  movie  http://www.universalpictures.com/americanpie   
 ## 
 ##       Writer  Year     imdbID imdbRating imdbVotes  
-## 0  Adam Herz  1999  tt0163651          7   342,940  
-## 1  Adam Herz  1999  tt0163651          7   342,940  
-## 2  Adam Herz  1999  tt0163651          7   342,940  
+## 0  Adam Herz  1999  tt0163651          7   344,032  
+## 1  Adam Herz  1999  tt0163651          7   344,032  
+## 2  Adam Herz  1999  tt0163651          7   344,032  
 ## 
 ## [3 rows x 25 columns]</code></pre>
 </div>

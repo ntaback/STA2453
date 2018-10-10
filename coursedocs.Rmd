@@ -28,3 +28,7 @@ knitr::opts_chunk$set(echo = TRUE)
 [Data Analysis as Art](sta2453-class2-slides-Sept25.html)
 
 [In-class Assignment](sta2453_class2_2018air_pollution_eda_student.html)
+
+# Class 3 - October 9
+
+[Statistics bootcamp - Logistic regression](logreg_slides.html) with [RMarkdown source](logreg_slides.Rmd)
