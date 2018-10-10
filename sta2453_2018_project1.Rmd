@@ -2,7 +2,10 @@
 title: "STA2453H1Y: Project #1 - Data Collection and Analysis"
 author: "Nathan Taback"
 date: '2018-09-24'
-output: html_document
+output: 
+  html_document:
+   toc: true
+   toc_float: true
 ---
 
 ```{r setup, include=FALSE}
@@ -105,7 +108,7 @@ print(pd.read_json(req))
 
 The assignment is to develop answers to the questions above using data, but you will almost surely need to develop more focused questions. You will have to collect data and wrangle into a format that can be analysed using statistical methods, and draw appropriate conclusions to answer the questions that you have selected.  
 
-# What Should I Submit?
+## What Should I Submit?
 
 Conduct the analysis and write the report using R Markdown or a Jupyter notebook^\*^.  You will submit a notebook that contains the writeup with your data analysis and any associated files. 
 
@@ -113,7 +116,7 @@ I should be able to run (knit) the R Markdown or Jupyter notebook with your data
 
 * NB: The R package [`reticulate`](https://rstudio.github.io/reticulate/articles/r_markdown.html) includes a Python engine for R Markdown that enables easy interoperabilty between Python and R chunks. I used it to write this document `r emo::ji("happy")`.
 
-# Answers to Some Common Questions
+## Answers to Some Common Questions
 
 1. It's not necessary for R/Python code chunks to appear in the report (in R Markdown use the chunk option `echo=FALSE`), unless there is some part of the code that will contribute to describing what you have done in the data analysis. Also, you will be submitting your R Markdown/Jupyter Notebook file so I can see all the gory details. This leads to ...
 
@@ -122,7 +125,7 @@ I should be able to run (knit) the R Markdown or Jupyter notebook with your data
 3. Who is the intended audience for the report and what do you mean by a “high level description”?  The intended audience is an educated person that has taken at least one basic statistics course, but might be a bit rusty on the details.  For example, your supervisor at work completed an MBA ten years ago and took a few statistics courses, but the details are a bit hazy.
 
 
-# How will my writing be evaluated?
+## How will my writing be evaluated?
 
 Your writing will be evaluated for clarity and conciseness. 
 

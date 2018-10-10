@@ -21,6 +21,9 @@
 <script src="site_libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui/jquery-ui.min.js"></script>
+<link href="site_libs/tocify/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify/jquery.tocify.js"></script>
 <script src="site_libs/navigation/tabsets.js"></script>
 <link href="site_libs/highlightjs/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs/highlight.js"></script>
@@ -166,6 +169,101 @@ $(document).ready(function () {
 <!-- code folding -->
 
 
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -407,25 +505,24 @@ print(pd.read_json(req))</code></pre>
 <div id="the-assignment" class="section level1">
 <h1>The Assignment</h1>
 <p>The assignment is to develop answers to the questions above using data, but you will almost surely need to develop more focused questions. You will have to collect data and wrangle into a format that can be analysed using statistical methods, and draw appropriate conclusions to answer the questions that you have selected.</p>
-</div>
-<div id="what-should-i-submit" class="section level1">
-<h1>What Should I Submit?</h1>
+<div id="what-should-i-submit" class="section level2">
+<h2>What Should I Submit?</h2>
 <p>Conduct the analysis and write the report using R Markdown or a Jupyter notebook<sup>*</sup>. You will submit a notebook that contains the writeup with your data analysis and any associated files.</p>
 <p>I should be able to run (knit) the R Markdown or Jupyter notebook with your data analysis.</p>
 <ul>
 <li>NB: The R package <a href="https://rstudio.github.io/reticulate/articles/r_markdown.html"><code>reticulate</code></a> includes a Python engine for R Markdown that enables easy interoperabilty between Python and R chunks. I used it to write this document 😆.</li>
 </ul>
 </div>
-<div id="answers-to-some-common-questions" class="section level1">
-<h1>Answers to Some Common Questions</h1>
+<div id="answers-to-some-common-questions" class="section level2">
+<h2>Answers to Some Common Questions</h2>
 <ol style="list-style-type: decimal">
 <li><p>It’s not necessary for R/Python code chunks to appear in the report (in R Markdown use the chunk option <code>echo=FALSE</code>), unless there is some part of the code that will contribute to describing what you have done in the data analysis. Also, you will be submitting your R Markdown/Jupyter Notebook file so I can see all the gory details. This leads to …</p></li>
 <li><p>What should be reported in the report? A high level description of what you have done. This leads to …</p></li>
 <li><p>Who is the intended audience for the report and what do you mean by a “high level description”? The intended audience is an educated person that has taken at least one basic statistics course, but might be a bit rusty on the details. For example, your supervisor at work completed an MBA ten years ago and took a few statistics courses, but the details are a bit hazy.</p></li>
 </ol>
 </div>
-<div id="how-will-my-writing-be-evaluated" class="section level1">
-<h1>How will my writing be evaluated?</h1>
+<div id="how-will-my-writing-be-evaluated" class="section level2">
+<h2>How will my writing be evaluated?</h2>
 <p>Your writing will be evaluated for clarity and conciseness.</p>
 <ol style="list-style-type: decimal">
 <li><p>Title [1-5] There should be an appropriate title, adequate summary, and complete information including names and dates.</p></li>
@@ -435,6 +532,7 @@ print(pd.read_json(req))</code></pre>
 <li><p>Conclusion / Discussion [1-5] The results should be clearly and completely summarized. This section should also include discussion of limitations and/or concerns and/or suggestions for future consideration as appropriate.</p></li>
 <li><p>General Considerations [1-5] The ideas should be presented in logical order, with well-organized sections, no grammatical, spelling, or punctuation errors, an appropriate level of technical detail, and be clear and easy to follow.</p></li>
 </ol>
+</div>
 </div>
 <div id="presentation" class="section level1">
 <h1>Presentation</h1>
@@ -485,6 +583,8 @@ print(pd.read_json(req))</code></pre>
 
 
 
+</div>
+</div>
 
 </div>
 
