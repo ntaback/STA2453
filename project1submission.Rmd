@@ -1,0 +1,64 @@
+---
+title: 'Instructions on submitting Project #1 Report'
+author: "Nathan Taback"
+date: '2018-10-28'
+output:
+  html_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+library(reticulate)
+use_python("anaconda3/bin/python")
+```
+
+
+
+# Submission Instructions for Project #1 Report
+
+Your report and any other documents should be submitted on Quercus [here](https://q.utoronto.ca/courses/62302/assignments/83181).
+
+## Submit your Report
+
+1. The report for project #1 should follow the guidelines outlined [here](sta2453_2018_project1.html).
+
+2. The report should be an html, pdf, or .docx document generated from either an RMarkdown file or Jupyter notebook (NB: currently Jupyter notebooks don't have a straight forward way to export a notebook to MS Word format).  
+
+## Submit Data and other Documents used in your Report
+
+3. The instructor should be able to easily reproduce your report (i.e., run your Jupyter notebook or Knit your RMarkdown document).
+
+4. In order to reproduce your report the instructor will need the data you used and any accompanying files (e.g., a picture stored as a .jpg file).  
+
+5. Store the data that you used in your report in the cloud (e.g., Github, Dropbox, Google Drive, etc.). Then you should be able to read in the data by specifying the url of the file. 
+
+For example, the file `sta2453grading.csv` is stored in the Github repository <https://github.com/ntaback/STA2453>.  The url for `sta2453grading.csv` is <https://raw.githubusercontent.com/ntaback/STA2453/master/sta2453grading.csv>
+
+In both examples below files starting with https:// will automatically be downloaded.
+
+### Example using R
+
+```{r}
+library(tidyverse)
+mydata <- read_csv(file = "https://raw.githubusercontent.com/ntaback/STA2453/master/sta2453grading.csv")
+mydata
+```
+
+
+### Example using Python.
+
+Files starting with https:// will automatically be downloaded).
+
+```{python}
+import pandas as pd
+mydata = pd.read_csv('https://raw.githubusercontent.com/ntaback/STA2453/master/sta2453grading.csv')
+print(mydata)
+```
+
+### Pictures
+
+The syntax for incorporating an image into either an RMarkdown or Jupyter notebook is `![](kitten.jpg)`
+
+![](kitten.jpg)
