@@ -12,7 +12,9 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 
 library(reticulate)
 use_python("anaconda3/bin/python")
-```
+conda_list()
+use_condaenv("rstudenv")
+````
 
 
 
@@ -56,6 +58,12 @@ import pandas as pd
 mydata = pd.read_csv('https://raw.githubusercontent.com/ntaback/STA2453/master/sta2453grading.csv')
 print(mydata)
 ```
+
+#### Convert Jupyter Notebook into a Report without Code Cells
+
+To convert a Jupyter Notebook to html, pdf, or LaTeX consider using [nbconvert](https://nbconvert.readthedocs.io/en/latest/install.html).  For example, to convert movies.ipynb to an html document **without code cells** the command line syntax for nbconvert is:
+
+`jupyter nbconvert --TemplateExporter.exclude_input=True movies.ipynb`
 
 ### Pictures
 

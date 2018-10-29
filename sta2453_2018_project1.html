@@ -95,9 +95,6 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
-.html-widget {
-  margin-bottom: 20px;
-}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -423,80 +420,22 @@ url = &#39;http://api.nytimes.com/svc/movies/v2/reviews/search.json?query=big&am
 df = pd.read_json(url, orient = &#39;records&#39;)
 nytdata = json_normalize(df[&#39;results&#39;])
 print(nytdata.head())</code></pre>
-<pre><code>##                 byline  critics_pick         date_updated  \
-## 0  Lawrence Van Gelder             0  2017-11-02 04:17:57   
-## 1       Stephen Holden             0  2017-11-02 04:17:57   
-## 2       Stephen Holden             1  2017-11-02 04:17:57   
-## 3         Janet Maslin             0  2017-11-02 04:17:57   
-## 4       STEPHEN HOLDEN             0  2017-11-02 04:17:56   
+<pre><code>##   ...
+## 0 ...
+## 1 ...
+## 2 ...
+## 3 ...
+## 4 ...
 ## 
-##                         display_title                              headline  \
-## 0          Deuce Bigalow: Male Gigolo  Deuce Bigalow: Male Gigolo (Movie)     
-## 1                        American Pie                American Pie (Movie)     
-## 2  South Park: Bigger, Longer &amp; Uncut                  South Park (Movie)     
-## 3                           Big Daddy                   Big Daddy (Movie)     
-## 4                  The Last Big Thing         Last Big Thing, The (Movie)     
-## 
-##                             link.suggested_link_text link.type  \
-## 0  Read the New York Times Review of Deuce Bigalo...   article   
-## 1     Read the New York Times Review of American Pie   article   
-## 2  Read the New York Times Review of South Park: ...   article   
-## 3        Read the New York Times Review of Big Daddy   article   
-## 4  Read the New York Times Review of The Last Big...   article   
-## 
-##                                             link.url mpaa_rating multimedia  \
-## 0  http://www.nytimes.com/movie/review?res=9801E2...           R       None   
-## 1  http://www.nytimes.com/movie/review?res=980CE2...       NC-17       None   
-## 2  http://www.nytimes.com/movie/review?res=9D00EF...           R       None   
-## 3  http://www.nytimes.com/movie/review?res=9405E2...       PG-13       None   
-## 4  http://www.nytimes.com/movie/review?res=9C05E7...           R       None   
-## 
-##   opening_date publication_date  \
-## 0   1999-12-10       1999-12-10   
-## 1   1999-07-09       1999-07-09   
-## 2   1999-06-30       1999-06-30   
-## 3   1999-06-25       1999-06-25   
-## 4   1998-09-23       1998-09-23   
-## 
-##                                        summary_short  
-## 0     Fish-tank cleaner turns male escort. Juvenile.  
-## 1  Teenagers vow to lose virginity by prom night....  
-## 2  The movie spinoff from the outrageous Comedy C...  
-## 3  Slacker tries fatherhood. Flimsy and sentimental.  
-## 4  Victims plot against performance artist. Satir...</code></pre>
+## [5 rows x 12 columns]</code></pre>
 <pre class="python"><code>apikey_omdb = &quot;ab8ac07e&quot;
 title = &#39;t=&#39; + nytdata[&#39;display_title&#39;][1].replace(&#39; &#39;, &#39;+&#39;)
 req = &#39;http://www.omdbapi.com/?apikey=&#39;+ apikey_omdb + &#39;&amp;&#39;+ title
 print(pd.read_json(req))</code></pre>
-<pre><code>##                                               Actors  \
-## 0  Jason Biggs, Chris Klein, Thomas Ian Nicholas,...   
-## 1  Jason Biggs, Chris Klein, Thomas Ian Nicholas,...   
-## 2  Jason Biggs, Chris Klein, Thomas Ian Nicholas,...   
-## 
-##                      Awards BoxOffice Country          DVD  \
-## 0  9 wins &amp; 14 nominations.       N/A     USA  21 Dec 1999   
-## 1  9 wins &amp; 14 nominations.       N/A     USA  21 Dec 1999   
-## 2  9 wins &amp; 14 nominations.       N/A     USA  21 Dec 1999   
-## 
-##                   Director   Genre Language  Metascore  \
-## 0  Paul Weitz, Chris Weitz  Comedy  English         58   
-## 1  Paul Weitz, Chris Weitz  Comedy  English         58   
-## 2  Paul Weitz, Chris Weitz  Comedy  English         58   
-## 
-##                                                 Plot    ...    Response  \
-## 0  Four teenage boys enter a pact to lose their v...    ...        True   
-## 1  Four teenage boys enter a pact to lose their v...    ...        True   
-## 2  Four teenage boys enter a pact to lose their v...    ...        True   
-## 
-##   Runtime         Title   Type                                       Website  \
-## 0  95 min  American Pie  movie  http://www.universalpictures.com/americanpie   
-## 1  95 min  American Pie  movie  http://www.universalpictures.com/americanpie   
-## 2  95 min  American Pie  movie  http://www.universalpictures.com/americanpie   
-## 
-##       Writer  Year     imdbID imdbRating imdbVotes  
-## 0  Adam Herz  1999  tt0163651          7   344,032  
-## 1  Adam Herz  1999  tt0163651          7   344,032  
-## 2  Adam Herz  1999  tt0163651          7   344,032  
+<pre><code>##           Title    ...     Response
+## 0  American Pie    ...         True
+## 1  American Pie    ...         True
+## 2  American Pie    ...         True
 ## 
 ## [3 rows x 25 columns]</code></pre>
 </div>
@@ -510,7 +449,7 @@ print(pd.read_json(req))</code></pre>
 <p>Conduct the analysis and write the report using R Markdown or a Jupyter notebook<sup>*</sup>. You will submit a notebook that contains the writeup with your data analysis and any associated files.</p>
 <p>I should be able to run (knit) the R Markdown or Jupyter notebook with your data analysis.</p>
 <ul>
-<li>NB: The R package <a href="https://rstudio.github.io/reticulate/articles/r_markdown.html"><code>reticulate</code></a> includes a Python engine for R Markdown that enables easy interoperabilty between Python and R chunks. I used it to write this document 😀.</li>
+<li>NB: The R package <a href="https://rstudio.github.io/reticulate/articles/r_markdown.html"><code>reticulate</code></a> includes a Python engine for R Markdown that enables easy interoperabilty between Python and R chunks. I used it to write this document 😃.</li>
 </ul>
 </div>
 <div id="answers-to-some-common-questions" class="section level2">
