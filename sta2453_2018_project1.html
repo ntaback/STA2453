@@ -371,8 +371,8 @@ omdb_q &lt;- GET(&quot;http://www.omdbapi.com/&quot;,
           query = list(t = nytdat$results$display_title[1], apikey = apikey_omdb))
 omdb_dat &lt;- as.data.frame(content(omdb_q))
 omdb_dat</code></pre>
-<pre><code>##     Title Year Rated    Released Runtime                 Genre
-## 1 Detroit 2017     R 04 Aug 2017 143 min Crime, Drama, History
+<pre><code>##     Title Year Rated    Released Runtime                           Genre
+## 1 Detroit 2017     R 04 Aug 2017 143 min Crime, Drama, History, Thriller
 ##          Director    Writer
 ## 1 Kathryn Bigelow Mark Boal
 ##                                                     Actors
@@ -384,9 +384,9 @@ omdb_dat</code></pre>
 ##                                                                                               Poster
 ## 1 https://m.media-amazon.com/images/M/MV5BMTg4MDk4MTUxMF5BMl5BanBnXkFtZTgwNDE5NjA5MjI@._V1_SX300.jpg
 ##            Ratings.Source Ratings.Value Ratings.Source.1 Ratings.Value.1
-## 1 Internet Movie Database        7.4/10  Rotten Tomatoes             84%
+## 1 Internet Movie Database        7.4/10  Rotten Tomatoes             83%
 ##   Ratings.Source.2 Ratings.Value.2 Metascore imdbRating imdbVotes
-## 1       Metacritic          77/100        77        7.4    35,516
+## 1       Metacritic          77/100        77        7.4    36,484
 ##      imdbID  Type         DVD   BoxOffice         Production
 ## 1 tt5390504 movie 12 Dec 2017 $16,788,494 Annapurna Pictures
 ##                 Website Response
@@ -449,7 +449,7 @@ print(pd.read_json(req))</code></pre>
 <p>Conduct the analysis and write the report using R Markdown or a Jupyter notebook<sup>*</sup>. You will submit a notebook that contains the writeup with your data analysis and any associated files.</p>
 <p>I should be able to run (knit) the R Markdown or Jupyter notebook with your data analysis.</p>
 <ul>
-<li>NB: The R package <a href="https://rstudio.github.io/reticulate/articles/r_markdown.html"><code>reticulate</code></a> includes a Python engine for R Markdown that enables easy interoperabilty between Python and R chunks. I used it to write this document 😃.</li>
+<li>NB: The R package <a href="https://rstudio.github.io/reticulate/articles/r_markdown.html"><code>reticulate</code></a> includes a Python engine for R Markdown that enables easy interoperabilty between Python and R chunks. I used it to write this document 🙋.</li>
 </ul>
 </div>
 <div id="answers-to-some-common-questions" class="section level2">

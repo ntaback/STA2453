@@ -1,0 +1,29 @@
+---
+title: "STA2453H1Y - Data Science Methods, Collaboration, and Communication"
+subtitle: "Project #2"
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Project Proposals
+## Due date: January 15, 2019
+
+Each group will submit one proposal.  The proposal should contain the following information.  
+
+- Names and student numbers of all group members.
+- Date of the proposal.
+- Project title: A snappy title that describes your project.
+- Who is your collaborator?
+- What are your primary questions?
+- Data collection: how will the data be collected? If you have data available then you might consider adding some sample code and data, although this is not necessary.
+- Exploratory Data Analysis: how will you explore the data? How will this exploration help you answer your questions? You might consider adding some shell tables or describe the types of graphs that you will produce.
+- Modelling: describe any formal statistical models that you might use to answer your questions.
+- A short description of how your group proposes to divide the work.  
+
+All of the information above can be revised between the proposal and final submission.

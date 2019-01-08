@@ -36,3 +36,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # Instructions for Submitting Project #1
 
 Detailed instructions are available [here](project1submission.html). 
+
+# Project #2 Proposals
+
+[Instructions](project2.html) for project #2 proposals.
