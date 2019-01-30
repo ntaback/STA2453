@@ -1,0 +1,43 @@
+---
+title: 'Presentation of Project #2 Data Analysis Plan'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+This will be part of your draft of project #2.
+
+A 10 minute presentation on your data analysis plan for project #2.  
+
+## Who?
+
+Each member of your group should speak.
+
+## What should be presented?
+
+Your data analysis plan for project #2.  
+
+Include:
+
+- Primary and secondary research questions.
+- What data your group will use to answer these questions.
+- Your group's plan on how the data will be used to answer the research questions.
+- Your group's work timeline. 
+
+Optional:
+
+- Preliminary results.
+- Questions to the class on statistical/ML methods, data sources, limitations of your project, etc.
+
+## Audience
+
+When listening to other group's presentation: 
+
+- ask (in a nice way `r emo::ji("happy")`) critical questions.  For example, how can you you answer your research questions given the limitations of your data; and
+- suggest alternative approaches.
+
+
+

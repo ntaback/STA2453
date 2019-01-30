@@ -44,3 +44,7 @@ Detailed instructions are available [here](project1submission.html).
 # Class - January 22
 
 [Slides](sta2453_jan22.pdf)
+
+# Class - February 5
+
+[Draft presentation for project #2](Project2draftpres.html)
