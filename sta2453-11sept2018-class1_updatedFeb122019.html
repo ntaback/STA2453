@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>STA2453 - Data Science, Collaboration, and Communication</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">STA2453</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="STA2453_coursedescription_201819.html">Syllabus</a>
+</li>
+<li>
+  <a href="coursedocs.html">Course documents</a>
+</li>
+<li>
+  <a href="additionalrefs.html">Additional References</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">STA2453 - Data Science, Collaboration, and Communication</h1>
+
+</div>
+
+
+<div id="course-overview" class="section level1">
+<h1>Course Overview</h1>
+<p>The <strong>primary learning objectives</strong> are:</p>
+<ol style="list-style-type: decimal">
+<li>to gain experience using data analysis to extract information.</li>
+<li>to gain experience communicating information that arise from a data analysis.</li>
+</ol>
+</div>
+<div id="computational-notebooks" class="section level1">
+<h1>Computational Notebooks</h1>
+<p>Lots of users love them …</p>
+<div class="figure">
+<img src="githubipynbcount.png" />
+
+</div>
+<p>But, not everyone …</p>
+<div class="figure">
+<img src="hptweet.png" />
+
+</div>
+<p>Ref: <a href="https://github.com/parente/nbestimate" class="uri">https://github.com/parente/nbestimate</a></p>
+</div>
+<div id="what-is-data-analysis" class="section level1">
+<h1>What is data analysis?</h1>
+<p>These quotes are from Tukey’s 1962 paper, The Future of Data Analysis.</p>
+<blockquote>
+<p>… data analysis, which I take to include, among other things: procedures for analyzing data, techniques for interpreting the results of such procedures, ways of planning the gathering of data to make its analysis easier, more precise or more accurate, and all the machinery and results of (mathematical) statistics which apply to analyzing data.</p>
+</blockquote>
+<blockquote>
+<p>Data analysis … take on the chracteristics of a science rather than those of mathematics …</p>
+</blockquote>
+<blockquote>
+<p>… give general advice about the use of techniques as soon as there is reasonable ground to think the advice is sound; be prepared for a reasonable fraction (not too large) of cases of such advice to be generally wrong.</p>
+</blockquote>
+<blockquote>
+<p>Pure mathematics differs from most human endevor in that assumptions are not criticized because of thier relation to something outside, though they are …often critized as unasthetic or as as unnecessarily strong …</p>
+</blockquote>
+<blockquote>
+<p>In data analysis we must look to a very heavy emphasis on judgement …</p>
+</blockquote>
+<blockquote>
+<p>(a1) judgement based upon the experience of the particular field of subject matter from which the data come,</p>
+</blockquote>
+<blockquote>
+<p>(a2) judgement based upon a broad experience with how particular techniques of data analysis have worked in a variety of fields of application,</p>
+</blockquote>
+<blockquote>
+<p>(a3) judgement based upon abstract results about the properties of particular techniques, whether obtained by mathematical proofs or empirical sampling.</p>
+</blockquote>
+<div class="figure">
+<img src="Data_Science_VD.png" />
+
+</div>
+<ul>
+<li><a href="https://leanpub.com/reportwriting">Roger Peng</a> states that</li>
+</ul>
+<blockquote>
+<p>If one were to write down the steps in a data analysis, you might come up with something along these lines of the following list</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>Defining the question</li>
+<li>Defining the ideal dataset</li>
+<li>Determining what data you can access<br />
+</li>
+<li>Obtaining the data</li>
+<li>Cleaning the data</li>
+<li>Exploratory data analysis</li>
+<li>Statistical prediction/modeling</li>
+<li>Interpretation of results</li>
+<li>Challenging of results</li>
+<li>Synthesis and write up</li>
+<li>Creating reproducible code</li>
+</ul>
+</blockquote>
+</div>
+<div id="computing" class="section level1">
+<h1>Computing</h1>
+<ul>
+<li><p>I use R with RStudio and suggest that you do to the same.</p></li>
+<li><p>Python is an option, but I won’t be able to support you to the same degree as I can in R.</p></li>
+<li><p>I expect that all work will be done in a <strong>“reproducible”</strong> manner.</p></li>
+</ul>
+</div>
+<div id="data-aquisition" class="section level1">
+<h1>Data aquisition</h1>
+<ul>
+<li>Experiment</li>
+<li>Observational study</li>
+</ul>
+</div>
+<div id="data-cleaning-and-wrangling" class="section level1">
+<h1>Data cleaning and wrangling</h1>
+<ul>
+<li>Data cleaning example</li>
+</ul>
+<pre class="r"><code>agedat &lt;- tibble(age = c(25, 20, 21, 120, 19, 31, 90, 17), sex = c(rep(&quot;Male&quot;, 4), rep(&quot;Female&quot;, 4)))
+
+ggplot(agedat, aes(sex, age)) + geom_boxplot()</code></pre>
+<p><img src="sta2453-11sept2018-class1_updatedFeb122019_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code>agedat_clean &lt;- filter(agedat, age &lt;= 100) # remove age &gt; 100
+  
+ggplot(agedat_clean, aes(sex, age)) + geom_boxplot()</code></pre>
+<p><img src="sta2453-11sept2018-class1_updatedFeb122019_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+<ul>
+<li>Data wrangling (transformation, etc.)</li>
+</ul>
+<pre class="r"><code>agedat_std &lt;- agedat_clean %&gt;% 
+  group_by(sex) %&gt;% 
+  summarise(mean=mean(age),sd = sd(age)) %&gt;% 
+  full_join(agedat_clean) %&gt;% 
+  mutate(std_age = (age-mean)/sd)
+
+ggplot(agedat_std,aes(sex,std_age)) + geom_boxplot()</code></pre>
+<p><img src="sta2453-11sept2018-class1_updatedFeb122019_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="methods" class="section level1">
+<h1>Methods</h1>
+<p>We won’t be learning about any particular methods in this course.</p>
+<p>I expect that you are familiar with:</p>
+<ol style="list-style-type: decimal">
+<li><p>Basic concepts in inference such as confidence interval, p-value, and prediction.</p></li>
+<li><p>Application of basic statistical methods used for inference (e.g., general linear models), and prediction (e.g., linear and logistic regression) using a programming language such as R or Python.</p></li>
+<li><p>Open to learning new methods techniques with minimal guidance.</p></li>
+</ol>
+</div>
+<div id="data-analysis---case-study" class="section level1">
+<h1>Data analysis - Case study</h1>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>The UofT administration is intrested in learning about what people are saying about UofT on social media platforms. What type of image does the University of Toronto (UofT) on social media?</p>
+</div>
+<div id="data-collection---twitter" class="section level2">
+<h2>Data Collection - Twitter</h2>
+<p>Twitter posts (tweets) were searched for the hashtag “#UofT”. The tweets were restricted to the time period 2017-09-05 thru 2017-09-11 and users were located within 50km of the University of Toronto St. George campus.</p>
+<pre class="r"><code># Set Twitter API credentials.
+library(twitteR)
+library(tidytext)
+consumer_key &lt;- consumer_key_nt 
+consumer_secret &lt;- consumer_secret_nt
+access_token &lt;- access_token_nt
+access_secret &lt;- access_secret_nt
+
+setup_twitter_oauth(consumer_key =  consumer_key, consumer_secret = consumer_secret,
+                    access_token = access_token, access_secret = access_secret)
+
+# Search Twitter
+
+fn_twitter &lt;- searchTwitter(&quot;#UofT&quot;, n = 50, lang = &quot;en&quot;, since = &#39;2018-09-19&#39;) 
+
+fn_twitter_df &lt;- twListToDF(fn_twitter) # Convert to data frame</code></pre>
+</div>
+<div id="data-cleaning-and-wrangling---twitter" class="section level2">
+<h2>Data Cleaning and Wrangling - Twitter</h2>
+<p>The words within each Tweet were tokenized. The 50 most frequent words were plotted to check for uncommon words that might not be in the stop words database within the <code>tidytext</code> package. The stop words - common words in a language, were removed.</p>
+<pre class="r"><code>library(tidytext)
+tweet_words &lt;- fn_twitter_df %&gt;% select(id, text) %&gt;% unnest_tokens(word,text)
+
+tweet_words %&gt;% count(word,sort = T) %&gt;% slice(1:50) %&gt;% 
+  ggplot(aes(x = reorder(word, 
+    n, function(n) -n), y = n)) + geom_bar(stat = &quot;identity&quot;) + theme(axis.text.x = element_text(angle = 60, 
+    hjust = 1)) + xlab(&quot;&quot;)
+
+
+# Create a list of stop words: a list of words that are not worth including
+
+my_stop_words &lt;- stop_words %&gt;% select(-lexicon) %&gt;% 
+  bind_rows(data.frame(word = c(&quot;st&quot;,&quot;30&quot;,&quot;1&quot;,&quot;7&quot;,&quot;00&quot;,&quot;10&quot;,&quot;22&quot;,&quot;5&quot;,&quot;uoft&quot;,&quot;https&quot;, &quot;t.co&quot;, &quot;rt&quot;, &quot;amp&quot;)))
+
+tweet_words_interesting &lt;- tweet_words %&gt;% anti_join(my_stop_words)</code></pre>
+<p>The distribution of words, from the remaining words, are shown in the histogram below.</p>
+<p>Sentiment analysis was done using the <code>tidytext</code> package. See <a href="http://tidytextmining.com/sentiment.html">Silge, J. and Robinson, D. Text Mining with R</a></p>
+<blockquote>
+<p>There are a variety of methods and disctionaries that exist for evaluating the opinion of emotion in text. The <code>tidytext</code> package contains several sentiment lexicons in the sentiments dataset.</p>
+</blockquote>
+<blockquote>
+<p>The <code>nrc</code> lexicon, from <a href="http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm">Saif Mohammad and Peter Turney</a>, categorizes words in a binary fashion (“yes”/“no”) into categories of positive, negative, anger, anticipation, disgust, fear, joy, sadness, surprise, and trust.</p>
+</blockquote>
+<p>The table below shows the number and frequency of words classified within each category.</p>
+<pre class="r"><code>library(tidytext)
+tweet_words_interesting %&gt;% group_by(word) %&gt;% tally(sort=TRUE) %&gt;% slice(1:50) %&gt;% ggplot(aes(x = reorder(word, 
+    n, function(n) -n), y = n)) + geom_bar(stat = &quot;identity&quot;) + theme(axis.text.x = element_text(angle = 60, 
+    hjust = 1)) + xlab(&quot;&quot;)
+
+nrc_lex &lt;- get_sentiments(&quot;nrc&quot;)
+
+fn_sentiment &lt;- tweet_words_interesting %&gt;% left_join(nrc_lex)
+
+sent_twitter &lt;- fn_sentiment %&gt;% filter(!is.na(sentiment)) %&gt;% group_by(sentiment) %&gt;% summarise(n=n())
+
+sent_twitter$f &lt;- round(100*sent_twitter$n/sum(sent_twitter$n))
+
+knitr:: kable(arrange(sent_twitter,desc(f)))</code></pre>
+</div>
+<div id="data-cleaning-and-wrangling---reddit" class="section level2">
+<h2>Data Cleaning and Wrangling - Reddit</h2>
+<p>Posts within the “subReddit” UofT were searched for “UofT”. The steps using Twitter posts were also followed for data cleaning and wrangling of the Reddit posts.</p>
+<pre class="r"><code>library(RedditExtractoR)
+library(tidytext)
+reddit_data &lt;- get_reddit(search_terms = &quot;uoft&amp;restrict_sr=on&amp;t=month&quot;, subreddit = &quot;UofT&quot;, cn_threshold = 1)</code></pre>
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |===                                                              |   4%
+  |                                                                       
+  |=====                                                            |   8%
+  |                                                                       
+  |========                                                         |  12%
+  |                                                                       
+  |==========                                                       |  16%
+  |                                                                       
+  |=============                                                    |  20%
+  |                                                                       
+  |================                                                 |  24%
+  |                                                                       
+  |==================                                               |  28%
+  |                                                                       
+  |=====================                                            |  32%
+  |                                                                       
+  |=======================                                          |  36%
+  |                                                                       
+  |==========================                                       |  40%
+  |                                                                       
+  |=============================                                    |  44%
+  |                                                                       
+  |===============================                                  |  48%
+  |                                                                       
+  |==================================                               |  52%
+  |                                                                       
+  |====================================                             |  56%
+  |                                                                       
+  |=======================================                          |  60%
+  |                                                                       
+  |==========================================                       |  64%
+  |                                                                       
+  |============================================                     |  68%
+  |                                                                       
+  |===============================================                  |  72%
+  |                                                                       
+  |=================================================                |  76%
+  |                                                                       
+  |====================================================             |  80%
+  |                                                                       
+  |=======================================================          |  84%
+  |                                                                       
+  |=========================================================        |  88%
+  |                                                                       
+  |============================================================     |  92%
+  |                                                                       
+  |==============================================================   |  96%
+  |                                                                       
+  |=================================================================| 100%</code></pre>
+<pre class="r"><code>reddit_words &lt;- reddit_data %&gt;% select(id, comment) %&gt;% unnest_tokens(word,comment)
+
+reddit_words %&gt;% count(word,sort = T) %&gt;% slice(1:50) %&gt;% 
+  ggplot(aes(x = reorder(word, 
+    n, function(n) -n), y = n)) + geom_bar(stat = &quot;identity&quot;) + theme(axis.text.x = element_text(angle = 60, 
+    hjust = 1)) + xlab(&quot;&quot;)</code></pre>
+<p><img src="sta2453-11sept2018-class1_updatedFeb122019_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<pre class="r"><code># Create a list of stop words: a list of words that are not worth including
+
+my_stop_words &lt;- stop_words %&gt;% select(-lexicon) 
+
+reddit_words_interesting &lt;- reddit_words %&gt;% anti_join(my_stop_words)
+
+reddit_words_interesting %&gt;% group_by(word) %&gt;% tally(sort=TRUE) %&gt;% slice(1:50) %&gt;% ggplot(aes(x = reorder(word, 
+    n, function(n) -n), y = n)) + geom_bar(stat = &quot;identity&quot;) + theme(axis.text.x = element_text(angle = 60, 
+    hjust = 1)) + xlab(&quot;&quot;)</code></pre>
+<p><img src="sta2453-11sept2018-class1_updatedFeb122019_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+<pre class="r"><code>my_stop_words &lt;- stop_words %&gt;% select(-lexicon) %&gt;% 
+  bind_rows(data.frame(word = c(&quot;top&quot;,&quot;1&quot;,&quot;http&quot;, &quot;2&quot;)))
+
+reddit_words_interesting &lt;- reddit_words %&gt;% anti_join(my_stop_words)
+
+reddit_words_interesting %&gt;% group_by(word) %&gt;% tally(sort=TRUE) %&gt;% slice(1:50) %&gt;% ggplot(aes(x = reorder(word, 
+    n, function(n) -n), y = n)) + geom_bar(stat = &quot;identity&quot;) + theme(axis.text.x = element_text(angle = 60, 
+    hjust = 1)) + xlab(&quot;&quot;)</code></pre>
+<p><img src="sta2453-11sept2018-class1_updatedFeb122019_files/figure-html/unnamed-chunk-8-3.png" width="672" /></p>
+<pre class="r"><code>nrc_lex &lt;- get_sentiments(&quot;nrc&quot;)
+
+fn_sentiment &lt;- reddit_words_interesting %&gt;% left_join(nrc_lex)
+
+sent_reddit &lt;- fn_sentiment %&gt;% filter(!is.na(sentiment)) %&gt;% group_by(sentiment) %&gt;% summarise(n=n())
+
+sent_reddit$f &lt;- round(100*sent_reddit$n/sum(sent_reddit$n))
+
+knitr:: kable(arrange(sent_reddit,desc(f)))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">sentiment</th>
+<th align="right">n</th>
+<th align="right">f</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">positive</td>
+<td align="right">3403</td>
+<td align="right">25</td>
+</tr>
+<tr class="even">
+<td align="left">negative</td>
+<td align="right">1988</td>
+<td align="right">15</td>
+</tr>
+<tr class="odd">
+<td align="left">trust</td>
+<td align="right">1793</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="left">anticipation</td>
+<td align="right">1414</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="left">joy</td>
+<td align="right">1093</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td align="left">anger</td>
+<td align="right">921</td>
+<td align="right">7</td>
+</tr>
+<tr class="odd">
+<td align="left">fear</td>
+<td align="right">935</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="left">sadness</td>
+<td align="right">829</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="left">disgust</td>
+<td align="right">583</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">surprise</td>
+<td align="right">441</td>
+<td align="right">3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="combining-sentiment-from-twitter-and-reddit" class="section level2">
+<h2>Combining Sentiment from Twitter and Reddit</h2>
+<p>Sentiment measured using the nrc lexicon was combined from Twitter and Reddit posts. The table displays the most frequent words appearing within each platform. A plot of the frequency of sentiment on Twitter versus Reddit with the least squares regression line is shown below.</p>
+<pre class="r"><code>comb_sent &lt;- left_join(sent_twitter,sent_reddit,by = &quot;sentiment&quot;) %&gt;% 
+  select(sentiment,twitt_f = f.x,redd_f = f.y) %&gt;% arrange(desc(twitt_f))
+
+knitr::kable(comb_sent)
+
+comb_sent %&gt;% ggplot(aes(x = twitt_f,y = redd_f))  + 
+  geom_point() + 
+  geom_smooth(method = &quot;lm&quot;,se = F) + 
+  geom_text(aes(label = sentiment),nudge_x = -0.5, nudge_y = .5, 
+            angle = -45,check_overlap = F,size = 3.5) +
+  labs(x = &quot;Sentiment on Twitter (%)&quot;,
+       y = &quot;Sentiment on Reddit (%)&quot;,
+       title = &quot;Sentiments Regarding UofT on Social Media&quot;)</code></pre>
+</div>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+<p>The most frequent sentiments on Twitter and Reddit are positive and trust, but then sentiment diverge for almost all sentiments except for joy. The sentiment on Twitter is mainly positive with sentiments such as trust, anticipation, and joy.</p>
+</div>
+<div id="limitations" class="section level1">
+<h1>Limitations</h1>
+<p>?</p>
+</div>
+<div id="interpretation-of-results" class="section level1">
+<h1>Interpretation of Results</h1>
+<p>?</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -147,7 +147,7 @@ access_secret_nt <- "nYPbxERO00k5sbK1GROHdnX6ppZ6K5DfzM1V71IRRPcpI"
 ```
 
 
-```{r,cache=TRUE}
+```{r,cache=TRUE,eval=FALSE}
 # Set Twitter API credentials.
 library(twitteR)
 library(tidytext)
@@ -171,7 +171,7 @@ fn_twitter_df <- twListToDF(fn_twitter) # Convert to data frame
 The words within each Tweet were tokenized. The 50 most frequent words were plotted to check for uncommon words that might not be in the stop words database within the `tidytext` package. The stop words - common words in a language, were removed. 
 
 
-```{r,cache=TRUE}
+```{r,cache=TRUE, eval= FALSE}
 library(tidytext)
 tweet_words <- fn_twitter_df %>% select(id, text) %>% unnest_tokens(word,text)
 
@@ -199,7 +199,7 @@ Sentiment analysis was done using the `tidytext` package.  See [Silge, J. and Ro
 
 The table below shows the number and frequency of words classified within each category. 
 
-```{r,cache=TRUE}
+```{r,cache=TRUE, eval=FALSE}
 library(tidytext)
 tweet_words_interesting %>% group_by(word) %>% tally(sort=TRUE) %>% slice(1:50) %>% ggplot(aes(x = reorder(word, 
     n, function(n) -n), y = n)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 60, 
@@ -228,13 +228,7 @@ reddit_data <- get_reddit(search_terms = "uoft&restrict_sr=on&t=month", subreddi
 
 
 ```{r}
-reddit_data_sept2017 <- reddit_data %>% filter(as.Date(post_date,format="%d-%m-%y")>=as.Date("01-09-18",format="%d-%m-%y") & as.Date(post_date,format="%d-%m-%y") <=as.Date("07-09-18",format="%d-%m-%y") )
-```
-
-
-
-```{r}
-reddit_words <- reddit_data_sept2017 %>% select(id, comment) %>% unnest_tokens(word,comment)
+reddit_words <- reddit_data %>% select(id, comment) %>% unnest_tokens(word,comment)
 
 reddit_words %>% count(word,sort = T) %>% slice(1:50) %>% 
   ggplot(aes(x = reorder(word, 
@@ -279,7 +273,7 @@ Sentiment measured using the nrc lexicon was combined from Twitter and Reddit po
 
 
 
-```{r}
+```{r, eval=FALSE}
 comb_sent <- left_join(sent_twitter,sent_reddit,by = "sentiment") %>% 
   select(sentiment,twitt_f = f.x,redd_f = f.y) %>% arrange(desc(twitt_f))
 
