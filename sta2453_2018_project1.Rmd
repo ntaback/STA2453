@@ -40,7 +40,7 @@ apikey_omdb <- "ab8ac07e"
 ```
 
 
-```{r}
+```{r, eval=FALSE}
 library(tidyverse)
 library(jsonlite)
 
@@ -64,7 +64,7 @@ nyt_dat$results[[1]] #first element of list
 
 
 
-```{r}
+```{r, eval=FALSE}
 library(httr)
 #OMDb data
 # Get OMDb data on first title
@@ -76,7 +76,7 @@ omdb_dat
 
 
 
-```{r}
+```{r, eval=FALSE}
 library(boxoffice)
 bodat <- boxoffice(dates = seq(as.Date("2017-07-28"), as.Date("2017-08-30"), "day"), site = "numbers")
 bodat %>% filter(movie == nytdat$results$display_title[1]) %>% head()
@@ -87,7 +87,7 @@ bodat %>% filter(movie == nytdat$results$display_title[1]) %>% head()
 Below is sample Python code to access the data.
 
 
-```{python}
+```{python, eval=FALSE}
 import json
 import requests
 import pandas as pd
