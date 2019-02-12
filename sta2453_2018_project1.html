@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Nathan Taback" />
+
+<meta name="date" content="2018-09-24" />
+
+<title>STA2453H1Y: Project #1 - Data Collection and Analysis</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">STA2453</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="STA2453_coursedescription_201819.html">Syllabus</a>
+</li>
+<li>
+  <a href="coursedocs.html">Course documents</a>
+</li>
+<li>
+  <a href="additionalrefs.html">Additional References</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">STA2453H1Y: Project #1 - Data Collection and Analysis</h1>
+<h4 class="author"><em>Nathan Taback</em></h4>
+<h4 class="date"><em>2018-09-24</em></h4>
+
+</div>
+
+
+<div id="data-collection-and-analysis" class="section level1">
+<h1>Data Collection and Analysis</h1>
+<div id="general-questions-that-the-data-analysis-should-answer" class="section level2">
+<h2>General Questions that the Data Analysis Should Answer</h2>
+<ol style="list-style-type: decimal">
+<li><p>How well do New York Times (NYT) movie critics pick box office hits?</p></li>
+<li><p>Is there a relationship between NYT movie review sentiment and crtics picks?</p></li>
+<li><p>What characteristics of movies affect revenue?</p></li>
+</ol>
+</div>
+<div id="data-collection" class="section level2">
+<h2>Data Collection</h2>
+<p>NYT movie reviews can be obtained from collected from <a href="http://developer.nytimes.com" class="uri">http://developer.nytimes.com</a> from the <a href="http://developer.nytimes.com/movie_reviews_v2.json#/README">Movie Reviews API</a>. The <a href="http://www.omdbapi.com">Open Movie Database (OMDb) - a RESTful web service</a>, <a href="https://www.boxofficemojo.com">Box Office Mojo</a>, and <a href="https://www.the-numbers.com">THE NUMBERS</a> all contain data related to movies. For the NYT API and OMDb you will need to request an API key.</p>
+<div id="sample-code-in-r" class="section level3">
+<h3>Sample Code in R</h3>
+<p>Below is sample R code to access the data.</p>
+<pre class="r"><code>library(tidyverse)
+library(jsonlite)
+
+url &lt;- &quot;http://api.nytimes.com/svc/movies/v2/reviews/search.json?&quot;
+query &lt;- &quot;query=big&amp;&quot;
+qdate &lt;- &quot;opening-date=2017-01-01;2018-01-01&amp;&quot; #date range
+key &lt;- &quot;api-key=&quot; #apikey_times contains NYT api key
+url2 &lt;- paste0(url,query,qdate,key,apikey_times) 
+nytdat &lt;- fromJSON(url2)
+nytdat$results</code></pre>
+<pre class="r"><code>#alternative method to access NYT API
+library(httr)
+url &lt;- &quot;http://api.nytimes.com/svc/movies/v2/reviews/search.json&quot;
+nyt_dat &lt;- GET(url, query = list(&quot;query&quot; = &quot;big&quot;, &quot;api-key&quot; = apikey_times))
+nyt_dat &lt;- content(nyt_dat, as = &quot;parsed&quot;)
+nyt_dat$results[[1]] #first element of list</code></pre>
+<pre class="r"><code>library(httr)
+#OMDb data
+# Get OMDb data on first title
+omdb_q &lt;- GET(&quot;http://www.omdbapi.com/&quot;, 
+          query = list(t = nytdat$results$display_title[1], apikey = apikey_omdb))
+omdb_dat &lt;- as.data.frame(content(omdb_q))
+omdb_dat</code></pre>
+<pre class="r"><code>library(boxoffice)
+bodat &lt;- boxoffice(dates = seq(as.Date(&quot;2017-07-28&quot;), as.Date(&quot;2017-08-30&quot;), &quot;day&quot;), site = &quot;numbers&quot;)
+bodat %&gt;% filter(movie == nytdat$results$display_title[1]) %&gt;% head()</code></pre>
+</div>
+<div id="sample-code-in-python" class="section level3">
+<h3>Sample Code in Python</h3>
+<p>Below is sample Python code to access the data.</p>
+<pre class="python"><code>import json
+import requests
+import pandas as pd
+from pandas.io.json import json_normalize
+url = &#39;http://api.nytimes.com/svc/movies/v2/reviews/search.json?query=big&amp;opening-date=1930-01-01;2000-01-01&amp;api-key=ae71411b586e4f9c82502e7e782b122d&#39;
+df = pd.read_json(url, orient = &#39;records&#39;)
+nytdata = json_normalize(df[&#39;results&#39;])
+print(nytdata.head())
+apikey_omdb = &quot;ab8ac07e&quot;
+title = &#39;t=&#39; + nytdata[&#39;display_title&#39;][1].replace(&#39; &#39;, &#39;+&#39;)
+req = &#39;http://www.omdbapi.com/?apikey=&#39;+ apikey_omdb + &#39;&amp;&#39;+ title
+print(pd.read_json(req))</code></pre>
+</div>
+</div>
+</div>
+<div id="the-assignment" class="section level1">
+<h1>The Assignment</h1>
+<p>The assignment is to develop answers to the questions above using data, but you will almost surely need to develop more focused questions. You will have to collect data and wrangle into a format that can be analysed using statistical methods, and draw appropriate conclusions to answer the questions that you have selected.</p>
+<div id="what-should-i-submit" class="section level2">
+<h2>What Should I Submit?</h2>
+<p>Conduct the analysis and write the report using R Markdown or a Jupyter notebook<sup>*</sup>. You will submit a notebook that contains the writeup with your data analysis and any associated files.</p>
+<p>I should be able to run (knit) the R Markdown or Jupyter notebook with your data analysis.</p>
+<ul>
+<li>NB: The R package <a href="https://rstudio.github.io/reticulate/articles/r_markdown.html"><code>reticulate</code></a> includes a Python engine for R Markdown that enables easy interoperabilty between Python and R chunks. I used it to write this document 😃.</li>
+</ul>
+</div>
+<div id="answers-to-some-common-questions" class="section level2">
+<h2>Answers to Some Common Questions</h2>
+<ol style="list-style-type: decimal">
+<li><p>It’s not necessary for R/Python code chunks to appear in the report (in R Markdown use the chunk option <code>echo=FALSE</code>), unless there is some part of the code that will contribute to describing what you have done in the data analysis. Also, you will be submitting your R Markdown/Jupyter Notebook file so I can see all the gory details. This leads to …</p></li>
+<li><p>What should be reported in the report? A high level description of what you have done. This leads to …</p></li>
+<li><p>Who is the intended audience for the report and what do you mean by a “high level description”? The intended audience is an educated person that has taken at least one basic statistics course, but might be a bit rusty on the details. For example, your supervisor at work completed an MBA ten years ago and took a few statistics courses, but the details are a bit hazy.</p></li>
+</ol>
+</div>
+<div id="how-will-my-writing-be-evaluated" class="section level2">
+<h2>How will my writing be evaluated?</h2>
+<p>Your writing will be evaluated for clarity and conciseness.</p>
+<ol style="list-style-type: decimal">
+<li><p>Title [1-5] There should be an appropriate title, adequate summary, and complete information including names and dates.</p></li>
+<li><p>Introduction [1-5] The purpose of the research should be clearly stated and the scope of what is considered in the report should be clear.</p></li>
+<li><p>Methods [1-5] The role of each method should be clearly stated. The description of the analyses should be clear and unambiguous so that another statistician or data scientist could easily re-construct it. The methods should be described accurately.</p></li>
+<li><p>Results [1-5] There should be appropriate tables and graphs. The results should be clearly stated in the context of the problem. The size and direction of significant results should be given. The results must be accurately stated. The research question should be adequately answered.</p></li>
+<li><p>Conclusion / Discussion [1-5] The results should be clearly and completely summarized. This section should also include discussion of limitations and/or concerns and/or suggestions for future consideration as appropriate.</p></li>
+<li><p>General Considerations [1-5] The ideas should be presented in logical order, with well-organized sections, no grammatical, spelling, or punctuation errors, an appropriate level of technical detail, and be clear and easy to follow.</p></li>
+</ol>
+</div>
+</div>
+<div id="presentation" class="section level1">
+<h1>Presentation</h1>
+<div id="time" class="section level2">
+<h2>Time</h2>
+<p>The time allotted for each student is 10 minutes plus 5 minutes for discussion.</p>
+</div>
+<div id="general-guidelines" class="section level2">
+<h2>General Guidelines</h2>
+<p>You will need to remind us about the project, but only tell us what we really need to know. We may be curious about the results, but they are not the purpose of this presentation. So, what should you include? We’re interested in what you learned in the context of your project that has made you a better applied statistician/data scientist. Depending on your project, you may want to address some of the following:</p>
+<ul>
+<li>What made the project difficult?</li>
+<li>What made the project easy?</li>
+<li>What did you learn about data collection?</li>
+<li>What did you learn about statistical communication?</li>
+<li>What did you learn about statistical methods?</li>
+<li>What useful rules-of-thumb did you learn?</li>
+<li>What kind of creative thinking was needed to turn the data or research questions into something that you could analyze?</li>
+<li>From the beginning of the course until now, what has changed in how you view statistical work?</li>
+</ul>
+</div>
+<div id="how-your-presentations-will-be-evaluated" class="section level2">
+<h2>How your presentations will be evaluated?</h2>
+<div id="content-60" class="section level3">
+<h3>Content [60%]</h3>
+<ul>
+<li>Is there evidence that you have thought deeply and insightfully about your project and what you have learned from it?</li>
+<li>Is the content interesting and relevant?</li>
+</ul>
+</div>
+<div id="clarity-30" class="section level3">
+<h3>Clarity [30%]</h3>
+<ul>
+<li>Could the points of your presentation be easily understood by your classmates?</li>
+<li>Are you organized?</li>
+<li>By listening to your presentation, have your classmates had the opportunity to also learn what you learned?</li>
+</ul>
+</div>
+<div id="delivery-10" class="section level3">
+<h3>Delivery [10%]</h3>
+<ul>
+<li>Was everything that you said easy to hear?</li>
+<li>Was your presentation style engaging?</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
