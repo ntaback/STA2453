@@ -48,3 +48,20 @@ Detailed instructions are available [here](project1submission.html).
 # Class - February 5
 
 [Draft presentation for project #2](Project2draftpres.html)
+
+# Class - April 2
+
+Final Presentations.  
+
+- Presentations should be approximately 15 minutes.
+
+- All group members should give part of the presentation.
+
+- Presentations will be graded using the following rubric.
+
+```{r, echo=FALSE, message=FALSE}
+library(tidyverse)
+pres_rub <- read_csv("presentation_rubric.csv")
+knitr::kable(pres_rub)
+```
+

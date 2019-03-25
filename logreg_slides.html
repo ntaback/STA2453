@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="author" content="Nathan Taback" />
     <meta name="date" content="2018-10-09" />
-    <link href="site_libs/remark-css/default.css" rel="stylesheet" />
-    <link href="site_libs/remark-css/default-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
   </head>
   <body>
     <textarea id="source">
@@ -361,11 +361,9 @@ tidy(lrmod)
 ```
 
 ```
-## # A tibble: 2 x 5
-##   term        estimate std.error statistic p.value
-##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-## 1 (Intercept)    0.788     0.241     3.27  0.00108
-## 2 proc           0.206     0.278     0.741 0.458
+##          term  estimate std.error statistic    p.value
+## 1 (Intercept) 0.7884574 0.2412090 3.2687727 0.00108015
+## 2        proc 0.2063581 0.2783426 0.7413819 0.45846194
 ```
 
 ```r
@@ -421,7 +419,7 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
 (function () {
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
   if (location.protocol !== 'file:' && /^https?:/.test(script.src))
     script.src  = script.src.replace(/^https?:/, '');
   document.getElementsByTagName('head')[0].appendChild(script);
